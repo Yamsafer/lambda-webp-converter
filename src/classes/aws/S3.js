@@ -76,7 +76,9 @@ export default class S3 {
                 Bucket: bucket,
                 Key: key,
                 Body: body,
-                ContentType: mime.contentType(path.extname(key))
+                ContentType: mime.contentType(path.extname(key)),
+		ACL: 'public-read',
+                CacheControl: 'max-age=2592000'
             }, (error, data) => {
                 if (error) {
                     console.log(error, error.stack, data);
